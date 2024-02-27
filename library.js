@@ -1025,3 +1025,5 @@ function valueToRGBRrange(minimum, maximum, value) {
     return { r: r, g: g, b: b }
 
 }
+
+loadData();
