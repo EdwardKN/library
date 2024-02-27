@@ -727,7 +727,6 @@ var pressedKeys = [];
 window.addEventListener('keydown', function (e) {
     console.log(e.code)
     pressedKeys[e.code] = true;
-    changeTool(e.code);
 })
 
 window.addEventListener('keyup', function (e) {
@@ -834,6 +833,10 @@ var deltaTime = 0;
 var updateDelta = false;
 
 function refreshLoop() {
+    renderC.clearRect(0, 0, renderCanvas.width, renderCanvas.height)
+    c.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (typeof update === 'function') update();
     window.requestAnimationFrame(function () {
         const NOW = performance.now();
         while (times.length > 0 && times[0] <= NOW - 1000) {
@@ -844,6 +847,11 @@ function refreshLoop() {
         deltaTime = updateDelta ? 60 / fps : 1;
         refreshLoop();
     });
+    if (typeof customRender === 'function') {
+        customRender();
+    } else {
+        renderC.drawImage(canvas, 0, 0);
+    }
 }
 refreshLoop();
 
