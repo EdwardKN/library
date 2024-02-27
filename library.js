@@ -852,7 +852,7 @@ function refreshLoop() {
     if (typeof customRender === 'function' && updateDelta) {
         customRender();
     } else {
-        renderC.drawImage(canvas, 0, 0);
+        renderC.drawImage(canvas, 0, 0, renderCanvas.width, renderCanvas.height);
     }
 }
 
