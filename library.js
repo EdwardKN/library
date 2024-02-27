@@ -319,6 +319,7 @@ async function loadImages() {
 async function loadData() {
     await loadSpriteSheet();
     await loadImages();
+    await new Promise(e => setTimeout(e, 500));
     refreshLoop();
 }
 
