@@ -319,6 +319,7 @@ async function loadImages() {
 async function loadData() {
     await loadSpriteSheet();
     await loadImages();
+    refreshLoop();
 }
 
 async function getImageData() {
@@ -853,7 +854,6 @@ function refreshLoop() {
         renderC.drawImage(canvas, 0, 0);
     }
 }
-refreshLoop();
 
 setTimeout(() => { updateDelta = true; }, 1000);
 
