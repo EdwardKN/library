@@ -847,7 +847,7 @@ function refreshLoop() {
         deltaTime = updateDelta ? 60 / fps : 1;
         refreshLoop();
     });
-    if (typeof customRender === 'function') {
+    if (typeof customRender === 'function' && updateDelta) {
         customRender();
     } else {
         renderC.drawImage(canvas, 0, 0);
