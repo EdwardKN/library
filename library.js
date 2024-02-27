@@ -727,12 +727,17 @@ function movingObjectToLineIntersect(from, to, x, y, w, h, oldX, oldY) {
 var pressedKeys = [];
 
 window.addEventListener('keydown', function (e) {
-    console.log(e.code)
     pressedKeys[e.code] = true;
+    if (typeof doOnKeyDown === 'function') {
+        doOnKeyDown(e);
+    }
 })
 
 window.addEventListener('keyup', function (e) {
     pressedKeys[e.code] = false;
+    if (typeof doOnKeyUp === 'function') {
+        doOnKeyUp(e);
+    }
 })
 
 Number.prototype.clamp = function (min, max) {
